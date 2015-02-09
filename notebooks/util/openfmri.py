@@ -39,7 +39,7 @@ def load_openfmri_ds(root, subject, mask=None, filterfun=None, TR=3.0):
         return int(m.group(1)), int(m.group(2))
 
     def load_run(runstring):
-        ds=fmri_dataset(samples=os.path.join(root,subject,'BOLD',runstring,'bold.nii.gz'))
+        ds=fmri_dataset(samples=os.path.join(root,subject,'BOLD',runstring,'bold.nii.gz'),mask=mask)
         task, run = extract_task_and_run(runstring)
 
         ds.sa['chunks'] = np.empty(len(ds))
